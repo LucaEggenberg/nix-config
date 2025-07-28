@@ -14,12 +14,9 @@
 
         themes = [ sddm-astronaut-theme ];
 
-        qt = {
-            enable = true;
-            qml.enable = true;
-            virtualKeyboard.enable = true;
-            virtualKeyboard.enableInputMethod = true;
-        };
+        qml.enable = true;
+        virtualKeyboard.enable = true;
+        virtualKeyboard.enableInputMethod = true;
     };
 }
 
