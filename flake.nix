@@ -14,7 +14,7 @@
         };
     };
 
-    outputs = { self, nixpkgs, home-manager, sddm-astronaut-theme, ... }@inputs:
+    outputs = inputs@{ self, nixpkgs, home-manager, sddm-astronaut-theme, ... }:
     let
         user = {
             userName = "luca";
@@ -40,7 +40,7 @@
                 };
                 modules = workstationBase ++ [
                     ./hosts/desktop
-                    inputs.home-manager.nixosModules.home-manager
+                    home-manager.nixosModules.home-manager
                 ];
             };
         };
