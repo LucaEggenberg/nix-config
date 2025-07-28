@@ -14,22 +14,6 @@
 
         themes = [ sddm-astronaut-theme ];
 
-        fonts.fontDir.enable = true;
-        fonts.fonts = [
-            (pkgs.callPackage (
-                { lib, stdenv, fetchurl, }:
-                stdenv.mkDerivation {
-                    pname = "sddm-astronaut-theme-fonts";
-                    version = "1.0";
-                    src = "${sddm-astronaut-theme}/Fonts";
-                    installPhase = ''
-                        mkdir -p $out/share/fonts/opentype
-                        cp -r $src/* $out/share/fonts/opentype/
-                    '';
-                }
-            ) {})
-        ];
-
         qt = {
             enable = true;
             qml.enable = true;
