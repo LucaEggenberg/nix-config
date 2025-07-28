@@ -1,9 +1,8 @@
 { config, pkgs, ... }: {
     fonts.fonts = with pkgs; [
         font-awesome
-        noto-fonts-cjk
+        noto-fonts-cjk-sans
         noto-fonts-emoji
-
-        nerd-fonts-caskaydia-mono
+        nerd-fonts.caskaydia-mono
     ];
 }

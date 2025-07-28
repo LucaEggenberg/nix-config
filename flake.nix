@@ -40,7 +40,11 @@
                 };
                 modules = workstationBase ++ [
                     ./hosts/desktop
-                    home-manager.nixosModules.home-manager
+                    home-manager.nixosModules.home-manager {
+                        home-manager.extraSpecialArgs = {
+                            inherit user nixpkgs;
+                        };
+                    }
                 ];
             };
         };

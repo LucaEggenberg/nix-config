@@ -4,8 +4,9 @@
         extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
         shell = pkgs.zsh;
     };
+    programs.zsh.enable = true;
 
-    console.keyMap = "ch";
+    console.keyMap = "sg";
     time.timeZone = "Europe/Zurich";
-    i18n.defaultLocale = "en_US-UTF-8";
+    i18n.defaultLocale = "en_US.UTF-8";
 }

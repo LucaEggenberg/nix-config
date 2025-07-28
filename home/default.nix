@@ -6,9 +6,7 @@
         ./modules/packages.nix
     ];
 
-    home-manager.users.${user.userName} = {
-        home.stateVersion = "${version}";
-        home.homeDirectory = "/home/${user.userName}";
-        programs.zsh.enable = true;   
-    };
+    nixpkgs.config.allowUnfree = true;
+    home.homeDirectory = "/home/${user.userName}";
+    programs.zsh.enable = true;
 }

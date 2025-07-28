@@ -2,7 +2,7 @@
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-    nix.package = pkgs.nixFlakes;
+    nix.package = pkgs.nixVersions.stable;
 
     nix.settings.auto-optimise-store = true;
     nix.gc.automatic = true;

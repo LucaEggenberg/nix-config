@@ -2,8 +2,8 @@
     home.packages = with pkgs; [
         protonmail-desktop
         protonvpn-gui
-        1password
         spotify
+        _1password-gui
         vscode
     ];    
 }

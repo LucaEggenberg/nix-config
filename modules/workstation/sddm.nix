@@ -6,13 +6,13 @@
 
         theme = "sddm-astronaut-theme";
 
-        extraConfig = ''
-            [InputMethod]
-            XkbLayout=ch
-            XkbVariant=
-        '';
+        #extraConfig = ''
+        #    [InputMethod]
+        #    XkbLayout=ch
+        #    XkbVariant=
+        #'';
 
-        themes = [ sddm-astronaut-theme ];
+        #themes = [ sddm-astronaut-theme ];
 
         #qml.enable = true;
         #virtualKeyboard.enable = true;
