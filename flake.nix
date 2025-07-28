@@ -5,7 +5,7 @@
         nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
         home-manager = {
             url = "github:nix-community/home-manager/release-25.05";
-            follows = "nixpkgs";
+            inputs.nixpkgs.follows = "nixpkgs";
         };
 
         sddm-astronaut-theme = {
