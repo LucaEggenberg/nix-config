@@ -12,7 +12,7 @@
             XkbVariant=
         '';
 
-        extraThemes = [ sddm-astronaut-theme ];
+        themes = [ sddm-astronaut-theme ];
 
         fonts.fontDir.enable = true;
         fonts.fonts = [
