@@ -1,8 +1,12 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, home-manager, user,  ... }: {
     imports = [
         ./hardware.nix
     ];
-    
+
+    home-manager.users.${user.userName}.imports = [
+        ../../home/default.nix
+    ];   
+
     networking.hostname = "nix";
     
     nixpkgs.config.allowUnfree = true;

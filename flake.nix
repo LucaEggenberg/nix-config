@@ -40,7 +40,7 @@
                 };
                 modules = workstationBase ++ [
                     ./hosts/desktop
-                    home-manager.nixosModules.home-manager
+                    inputs.home-manager.nixosModules.home-manager
                 ];
             };
         };
