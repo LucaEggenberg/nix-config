@@ -7,7 +7,7 @@
         ../../home/default.nix
     ];   
 
-    networking.hostname = "nix";
+    networking.hostName = "nix";
     
     nixpkgs.config.allowUnfree = true;
 
