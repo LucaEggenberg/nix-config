@@ -25,7 +25,8 @@ cd ~/nix-config
 ### 3. Generate Hardware Configuration
 ```bash
 # replace <hostname>
-sudo nixos-generate-config --no-files --show-console-config > ./hosts/<hostname>/hardware.nix
+sudo nixos-generate-config
+cp /etc/nixos/hardware-configuration.nix ~/nix-config/hosts/<hostname>/hardware.nix
 ```
 
 ### 4. Set Environment Variables
