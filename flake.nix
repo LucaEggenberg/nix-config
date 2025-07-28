@@ -14,7 +14,7 @@
         };
     };
 
-    outputs = { self, nixpkgs, home-manager, sddm-astronaut-theme, ... }: 
+    outputs = { self, nixpkgs, home-manager, sddm-astronaut-theme, ... }@inputs:
     let
         user = {
             userName = "luca";
