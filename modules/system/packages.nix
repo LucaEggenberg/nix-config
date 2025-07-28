@@ -9,5 +9,5 @@
         file
         unzip
         neovim
-    ]
+    ];
 }

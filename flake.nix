@@ -1,5 +1,5 @@
 {
-    description = "My personal nix config"
+    description = "My personal nix config";
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
@@ -8,10 +8,10 @@
             follows = "nixpkgs";
         };
 
-        sddm-theme = {
+        sddm-astronaut-theme = {
             url = "github:Keyitdev/sddm-astronaut-theme/master";
             flake = false;
-        }
+        };
     };
 
     outputs = { self, nixpkgs, home-manager, sddm-astronaut-theme, ... }: 
@@ -39,9 +39,9 @@
                     inherit self nixpkgs home-manager sddm-astronaut-theme user version;
                 };
                 modules = workstationBase ++ [
-                    ./hosts/desktop/
+                    ./hosts/desktop
                     home-manager.nixosModules.home-manager
-                ]
+                ];
             };
         };
     };

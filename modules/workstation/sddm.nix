@@ -7,9 +7,6 @@
         theme = "sddm-astronaut-theme";
 
         extraConfig = ''
-            [Theme]
-            Current=${config.services.displayManager.sddm.theme}
-
             [InputMethod]
             XkbLayout=ch
             XkbVariant=
@@ -38,7 +35,7 @@
             qml.enable = true;
             virtualKeyboard.enable = true;
             virtualKeyboard.enableInputMethod = true;
-        }
+        };
     };
 }
 

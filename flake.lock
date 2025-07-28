@@ -1,0 +1,48 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1753489912,
+        "narHash": "sha256-uDCFHeXdRIgJpYmtcUxGEsZ+hYlLPBhR83fdU+vbC1s=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "13e8d35b7d6028b7198f8186bc0347c6abaa2701",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-25.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "home-manager": [
+          "nixpkgs"
+        ],
+        "nixpkgs": "nixpkgs",
+        "sddm-astronaut-theme": "sddm-astronaut-theme"
+      }
+    },
+    "sddm-astronaut-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750508522,
+        "narHash": "sha256-33CzZ4vK1dicVzICbudk8gSRC/MExG+WnrE9wIWET14=",
+        "owner": "Keyitdev",
+        "repo": "sddm-astronaut-theme",
+        "rev": "3ef9f511fd072ff3dbb6eb3c1c499a71f338967e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Keyitdev",
+        "ref": "master",
+        "repo": "sddm-astronaut-theme",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
