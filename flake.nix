@@ -9,7 +9,7 @@
         };
     };
 
-    outputs = inputs@{ self, nixpkgs, home-manager, sddm-astronaut-theme, ... }:
+    outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let
         version = "25.05";
 
@@ -34,7 +34,7 @@
             desktop = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
                 specialArgs = { 
-                    inherit self nixpkgs home-manager sddm-astronaut-theme user version;
+                    inherit self nixpkgs home-manager user version;
                 };
                 modules = workstationBase ++ [
                     ./hosts/desktop

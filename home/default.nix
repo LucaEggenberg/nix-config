@@ -11,4 +11,5 @@
     
     nixpkgs.config.allowUnfree = true;   
     programs.zsh.enable = true;
+    wayland.windowManager.hyprland.enable = true;
 }

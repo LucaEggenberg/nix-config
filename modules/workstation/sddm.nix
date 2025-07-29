@@ -1,4 +1,4 @@
-{ pkgs, sddm-astronaut-theme, ... }: {
+{ pkgs, ... }: {
     services.displayManager.sddm = {
         enable = true;
         wayland.enable = true;
