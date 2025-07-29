@@ -2,12 +2,11 @@
     environment.systemPackages = with pkgs; [
         wget
         git
-        vim
+        neovim
         htop
         tmux
         curl
         file
         unzip
-        neovim
     ];
 }

@@ -2,13 +2,7 @@
     imports = [
         ./hardware.nix
     ];
-
-    home-manager.users.${user.userName} = {
-        home.stateVersion = "${version}";
-        imports = [
-            ../../home/default.nix
-        ];   
-   }; 
+    
     networking.hostName = "nix";
     
     nixpkgs.config.allowUnfree = true;

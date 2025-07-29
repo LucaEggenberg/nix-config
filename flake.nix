@@ -7,22 +7,20 @@
             url = "github:nix-community/home-manager/release-25.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-
-        sddm-astronaut-theme = {
-            url = "github:Keyitdev/sddm-astronaut-theme/master";
-            flake = false;
-        };
     };
 
     outputs = inputs@{ self, nixpkgs, home-manager, sddm-astronaut-theme, ... }:
     let
+        version = "25.05";
+
         user = {
             userName = "luca";
             fullName = "Luca Eggenberg";
+            locale = "en_US.UTF-8";
+            tz = "Europe/Zurich";
+            keyMap = "sg";
         };
         
-        version = "25.05";
-
         moduleBase = [
             ./modules/system
             ./modules/common
@@ -41,8 +39,9 @@
                 modules = workstationBase ++ [
                     ./hosts/desktop
                     home-manager.nixosModules.home-manager {
+                        home-manager.users.${user.userName} = import ./home;
                         home-manager.extraSpecialArgs = {
-                            inherit user nixpkgs;
+                            inherit user nixpkgs version;
                         };
                     }
                 ];
