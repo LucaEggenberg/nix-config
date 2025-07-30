@@ -1,9 +1,8 @@
 { config, pkgs, lib, user, ... }: {
-    programs.zsh.enable = true;
     users.users.${user.userName} = {
         isNormalUser = true;
         extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
-        shell = pkgs.zsh;
+        shell = pkgs.bash;
     };
     
     console.keyMap = "${user.keyMap}";

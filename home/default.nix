@@ -9,7 +9,6 @@
     home.stateVersion = "${version}";
     home.homeDirectory = "/home/${user.userName}";
     
-    nixpkgs.config.allowUnfree = true;   
-    programs.zsh.enable = true;
+    nixpkgs.config.allowUnfree = true;
     wayland.windowManager.hyprland.enable = true;
 }
