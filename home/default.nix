@@ -1,7 +1,7 @@
-{ config, pkgs, lib, user, version, ... }: {
+{ nixpkgs, user, version, dotfiles, ... }: {
     
     imports = [
-        ./modules/config.nix
+        dotfiles.homeManagerModules.dotfiles
         ./modules/git.nix
         ./modules/packages.nix
     ];
