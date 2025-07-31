@@ -5,6 +5,7 @@
     services.gnome.gnome-keyring.enable = true;
 
     environment.systemPackages = with pkgs; [
+        adwaita-icon-theme
         kitty
         mako
         qt5.qtwayland
@@ -13,8 +14,7 @@
         wl-clipboard
         wlogout
         wofi
-        hyprcursor
         grim
-        slurp
+        slurp       
     ];
 }

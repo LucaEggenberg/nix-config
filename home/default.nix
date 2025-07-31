@@ -4,6 +4,7 @@
         dotfiles.homeManagerModules.dotfiles
         ./modules/git.nix
         ./modules/packages.nix
+        ./modules/gtk.nix
     ];
 
     home.stateVersion = "${version}";
