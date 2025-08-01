@@ -25,11 +25,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1754047739,
-        "narHash": "sha256-n+rGzC3fO95RodZiL618vIKL75TO0lIXLS3cA1CbM6s=",
+        "lastModified": 1754063361,
+        "narHash": "sha256-aZxXk74sV5g0zl0agy6emT1lAKUubycRn56MVLMtt8s=",
         "ref": "main",
-        "rev": "c29e8041449f5992119ab8979df1b33edca91e03",
-        "revCount": 22,
+        "rev": "558177df2293e7a7eff9d56c810575bf5212410a",
+        "revCount": 30,
         "type": "git",
         "url": "https://github.com/LucaEggenberg/dotfiles.git"
       },

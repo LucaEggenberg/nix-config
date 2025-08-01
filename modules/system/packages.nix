@@ -8,5 +8,6 @@
         curl
         file
         unzip
+        psmisc
     ];
 }
