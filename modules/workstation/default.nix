@@ -1,11 +1,9 @@
-{ ... }: {
-    security.polkit.enable = true;
-    services.gnome.gnome-keyring.enable = true;
-    services.xserver.desktopManager.gnome.enable = true;
+{ pkgs, ... }: {
     imports = [
         ./audio.nix
+        ./dm.nix
+        ./gnome.nix
         ./hyprland.nix
         ./packages.nix
-        ./dm.nix
     ];
 }
