@@ -3,5 +3,6 @@
         firefox
         nautilus
         kubectl
+        papirus-folders
     ];
 }

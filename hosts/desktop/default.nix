@@ -13,6 +13,10 @@
         discord
     ];
 
+    environment.sessionVariables = {
+        NIX_HOST = "desktop";
+    };
+
     # Enable OpenGL
     hardware.graphics = {
         enable = true;
