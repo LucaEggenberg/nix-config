@@ -5,5 +5,8 @@
         spotify
         _1password-gui
         vscode
+        pkgs.catppuccin-cursors.frappeMauve
+        pkgs.catppuccin-gtk
+        pkgs.papirus-folders
     ];    
 }
