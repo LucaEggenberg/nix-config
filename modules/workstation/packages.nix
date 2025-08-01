@@ -4,5 +4,7 @@
         nautilus
         kubectl
         papirus-folders
+        wl-clipboard
+        cliphist
     ];
 }

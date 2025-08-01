@@ -6,5 +6,5 @@
         spotify
         _1password-gui
         vscode
-    ];    
+    ];
 }

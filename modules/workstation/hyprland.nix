@@ -10,7 +10,6 @@
         qt5.qtwayland
         qt6.qtwayland
         waybar
-        wl-clipboard
         wlogout
         wofi
         grim
