@@ -1,6 +1,5 @@
 { ... }: {
     catppuccin = {
-        enable = true;
         flavor = "frappe";
         accent = "lavender";
 
@@ -9,7 +8,11 @@
             accent = "mauve";
         };
 
-        gtk.enable = true;
-        gtk.size = "compact";
+        gtk = {
+            enable = true;
+            size = "compact";
+        };
+
+        spotify-player.enable = true;
     };
 }

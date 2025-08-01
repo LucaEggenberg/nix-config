@@ -5,6 +5,7 @@
         catppuccin.homeManagerModules.catppuccin
         ./modules/git.nix
         ./modules/packages.nix
+        ./modules/gtk.nix
         ./modules/catppuccin.nix
     ];
 
