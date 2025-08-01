@@ -1,12 +1,13 @@
 { nixpkgs, user, version, dotfiles, catppuccin, ... }: {
     
     imports = [
-        dotfiles.homeManagerModules.dotfiles
-        catppuccin.homeManagerModules.catppuccin
-        ./modules/git.nix
-        ./modules/packages.nix
-        ./modules/gtk.nix
+        dotfiles.homeModules.dotfiles
+        catppuccin.homeModules.catppuccin
+        ./modules/bash.nix
         ./modules/catppuccin.nix
+        ./modules/git.nix
+        ./modules/gtk.nix
+        ./modules/packages.nix
     ];
 
     home.stateVersion = "${version}";
