@@ -24,6 +24,8 @@
         discord
     ];
 
+    services.hardware.openrgb.enable = true;
+
     programs.steam = {
         enable = true;
     };

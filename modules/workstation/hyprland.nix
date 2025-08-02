@@ -13,6 +13,8 @@
         wlogout
         wofi
         grim
-        slurp       
+        grimblast
+        slurp
+        swww
     ];
 }
