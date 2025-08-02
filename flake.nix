@@ -7,14 +7,10 @@
             url = "github:nix-community/home-manager/release-25.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        dotfiles = {
-            url = "git+https://github.com/LucaEggenberg/dotfiles.git?ref=main";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
         catppuccin.url = "github:catppuccin/nix";
     };
 
-    outputs = inputs@{ self, nixpkgs, home-manager, dotfiles, catppuccin, ... }:
+    outputs = inputs@{ self, nixpkgs, home-manager, catppuccin, ... }:
     let
         version = "25.05";
 
@@ -46,7 +42,7 @@
                     home-manager.nixosModules.home-manager {
                         home-manager.users.${user.userName} = import ./home;
                         home-manager.extraSpecialArgs = {
-                            inherit user nixpkgs version dotfiles catppuccin;
+                            inherit user nixpkgs version catppuccin;
                         };
                     }
                 ];

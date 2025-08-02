@@ -8,11 +8,6 @@
             accent = "mauve";
         };
 
-        gtk = {
-            enable = true;
-            size = "compact";
-        };
-
         spotify-player.enable = true;
     };
 }

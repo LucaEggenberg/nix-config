@@ -13,7 +13,6 @@
             vi = "nvim";
             vim = "nvim";
             mkdir = "mkdir -pv";
-
         };
     };
 }
