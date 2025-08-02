@@ -22,7 +22,6 @@ in {
             "hypr"
             "kitty"
             "mako"
-            "waybar"
             "wlogout"
             "wofi"
         )
@@ -37,6 +36,14 @@ in {
             
             ${pkgs.coreutils}/bin/ln -s -T "$src" "$target"
         done
+
+        rm -rf $HOME/.config/waybar/*
+        src="${clone-dir}/.stow-targets/.config/waybar"
+        target="$HOME/.config/waybar"
+        ${pkgs.coreutils}/bin/ln -s -T "$src/colors.css" "$target/colors.css"
+        ${pkgs.coreutils}/bin/ln -s -T "$src/config.jsonc" "$target/config.jsonc"
+        ${pkgs.coreutils}/bin/ln -s -T "$src/nix/logo.jsonc" "$target/logo.jsonc"
+        ${pkgs.coreutils}/bin/ln -s -T "$src/style.css" "$target/style.css"
 
         find ${clone-dir} -type f -name "*.sh" -exec chmod +x {} +
     '';
