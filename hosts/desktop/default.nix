@@ -9,9 +9,14 @@
 
     environment.systemPackages = with pkgs; [
         steam
+        steam-run
         openrgb
         discord
     ];
+
+    programs.steam = {
+        enable = true;
+    };
 
     environment.sessionVariables = {
         NIX_HOST = "desktop";
