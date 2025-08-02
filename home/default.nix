@@ -15,7 +15,4 @@
     
     nixpkgs.config.allowUnfree = true;
     wayland.windowManager.hyprland.enable = true;
-    nixpkgs.overlays = [
-        (import ./overlays.nix)
-    ];
 }
