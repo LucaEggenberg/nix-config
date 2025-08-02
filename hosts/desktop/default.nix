@@ -1,8 +1,18 @@
 { config, pkgs, lib, home-manager, user, version,  ... }: {
+    environment.sessionVariables = {
+        NIX_HOST = "desktop";
+    };
+    
     imports = [
         ./hardware.nix
     ];
     
+    fileSystems."/media/store" = {
+        device = "/dev/disk/by-uuid/84c4a7bc-8f33-410a-b7fa-0a6bc31c3132";
+        fsType = "ext4";
+        options = [ "defaults" "nofail" ];
+    };
+
     networking.hostName = "nix";
     
     nixpkgs.config.allowUnfree = true;
@@ -16,10 +26,6 @@
 
     programs.steam = {
         enable = true;
-    };
-
-    environment.sessionVariables = {
-        NIX_HOST = "desktop";
     };
 
     # Enable OpenGL
