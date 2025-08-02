@@ -18,27 +18,6 @@
         "type": "github"
       }
     },
-    "dotfiles": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1754130472,
-        "narHash": "sha256-cuviaTIHnPsTXcBzbOD9vc6oJIgs/bu6iNac9aa7WT4=",
-        "ref": "main",
-        "rev": "4c254b4d1361ac5b0960fa85afda9928e487350d",
-        "revCount": 32,
-        "type": "git",
-        "url": "https://github.com/LucaEggenberg/dotfiles.git"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://github.com/LucaEggenberg/dotfiles.git"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -95,7 +74,6 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
-        "dotfiles": "dotfiles",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2"
       }
