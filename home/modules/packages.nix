@@ -14,5 +14,6 @@ in {
         spotify
         vscode
         _1password-wrapped
+        qbittorrent
     ];
 }
