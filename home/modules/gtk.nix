@@ -12,10 +12,10 @@
             package = pkgs.nerd-fonts.caskaydia-mono;
         };
 
-        theme = {
-            name = "Nordic";
-            package = pkgs.nordic;
-        };
+        theme.name = "Adwaita-dark";
+
+        gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+        gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
 
         gtk3.extraConfig = {
             Settings = ''

@@ -15,6 +15,5 @@ in {
         vscode
         _1password-wrapped
         qbittorrent
-        nordic
     ];
 }
