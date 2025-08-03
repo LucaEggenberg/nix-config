@@ -25,6 +25,10 @@
             tz = "Europe/Zurich";
             keyMap = "sg";
         };
+
+        args = {
+            inherit self nixpkgs home-manager user version quickshell catppuccin;
+        };
         
         moduleBase = [
             ./modules/system
@@ -38,31 +42,23 @@
         nixosConfigurations = {
             desktop = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
-                specialArgs = { 
-                    inherit self nixpkgs home-manager user version;
-                };
+                specialArgs = args;
                 modules = workstationBase ++ [
                     ./hosts/desktop
                     home-manager.nixosModules.home-manager {
                         home-manager.users.${user.userName} = import ./home;
-                        home-manager.extraSpecialArgs = {
-                            inherit user nixpkgs version quickshell catppuccin;
-                        };
+                        home-manager.extraSpecialArgs = args;
                     }
                 ];
             };
             lenovo = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
-                specialArgs = { 
-                    inherit self nixpkgs home-manager user version;
-                };
+                specialArgs = args;
                 modules = workstationBase ++ [
                     ./hosts/lenovo
                     home-manager.nixosModules.home-manager {
                         home-manager.users.${user.userName} = import ./home;
-                        home-manager.extraSpecialArgs = {
-                            inherit user nixpkgs version quickshell catppuccin;
-                        };
+                        home-manager.extraSpecialArgs = args;
                     }
                 ];
             };
