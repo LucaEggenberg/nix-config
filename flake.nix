@@ -7,10 +7,14 @@
             url = "github:nix-community/home-manager/release-25.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        quickshell = {
+            url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
         catppuccin.url = "github:catppuccin/nix";
     };
 
-    outputs = inputs@{ self, nixpkgs, home-manager, catppuccin, ... }:
+    outputs = inputs@{ self, nixpkgs, home-manager, quickshell, catppuccin, ... }:
     let
         version = "25.05";
 
@@ -42,7 +46,7 @@
                     home-manager.nixosModules.home-manager {
                         home-manager.users.${user.userName} = import ./home;
                         home-manager.extraSpecialArgs = {
-                            inherit user nixpkgs version catppuccin;
+                            inherit user nixpkgs version quickshell catppuccin;
                         };
                     }
                 ];
