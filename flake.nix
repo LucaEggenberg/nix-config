@@ -51,6 +51,21 @@
                     }
                 ];
             };
+            lenovo = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = { 
+                    inherit self nixpkgs home-manager user version;
+                };
+                modules = workstationBase ++ [
+                    ./hosts/lenovo
+                    home-manager.nixosModules.home-manager {
+                        home-manager.users.${user.userName} = import ./home;
+                        home-manager.extraSpecialArgs = {
+                            inherit user nixpkgs version quickshell catppuccin;
+                        };
+                    }
+                ];
+            };
         };
     };
 }
