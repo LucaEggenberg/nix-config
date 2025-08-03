@@ -8,6 +8,7 @@
         ./modules/git.nix
         ./modules/gtk.nix
         ./modules/packages.nix
+        ./modules/quickshell.nix
     ];
 
     home.stateVersion = "${version}";
