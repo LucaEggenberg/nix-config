@@ -27,7 +27,7 @@ in {
         )
 
         for f in "''${dotfiles[@]}"; do
-            src="${clone-dir}/.stow-targets/.config/$f"
+            src="${clone-dir}/$f"
             target="$HOME/.config/$f"
 
             if [ -e "$target" ]; then
@@ -37,9 +37,10 @@ in {
             ${pkgs.coreutils}/bin/ln -s -T "$src" "$target"
         done
 
-        rm -rf $HOME/.config/waybar/*
-        src="${clone-dir}/.stow-targets/.config/waybar"
+        src="${clone-dir}/waybar"
         target="$HOME/.config/waybar"
+        mkdir -p $target
+	    rm -rf $target/*
         ${pkgs.coreutils}/bin/ln -s -T "$src/colors.css" "$target/colors.css"
         ${pkgs.coreutils}/bin/ln -s -T "$src/config.jsonc" "$target/config.jsonc"
         ${pkgs.coreutils}/bin/ln -s -T "$src/nix/logo.jsonc" "$target/logo.jsonc"
