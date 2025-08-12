@@ -63,7 +63,6 @@ in {
 
             exec-once = [
                 "gnome-keyring-daemon --start --components=pkcs11,secrets,ssh"
-                "waybar"
                 "blueman-applet"
                 "wl-paste -t text --watch cliphist store"
                 "swww-daemon"
