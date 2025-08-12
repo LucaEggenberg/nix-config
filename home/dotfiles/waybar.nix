@@ -1,7 +1,11 @@
 { config, pkgs, ... }: {
+    home.packages = with pkgs; [
+        waybar
+    ];
+
     programs.waybar = {
         enable = true;
-
+        
         settings = {
             main = {
                 layer = "top";
@@ -109,6 +113,6 @@
         };
     };
 
-    home.file.".config/waybar/style.css".source = ../assets/waybar/style.css;
-    home.file.".config/waybar/colors.css".source = ../assets/waybar/colors.css;
+    home.file.".config/waybar/style.css".source = ./assets/waybar/style.css;
+    home.file.".config/waybar/colors.css".source = ./assets/waybar/colors.css;
 }

@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-    home.file.".config/btop/themes".source = ../assets/btop/themes;
+    home.file.".config/btop/themes".source = ./assets/btop/themes;
 
     programs.btop = {
         enable = true;

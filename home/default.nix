@@ -4,11 +4,10 @@
         catppuccin.homeModules.catppuccin
         ./modules/bash.nix
         ./modules/catppuccin.nix
-        ./modules/dotfiles.nix
         ./modules/git.nix
         ./modules/gtk.nix
         ./modules/packages.nix
-        ./modules/quickshell.nix
+        ./dotfiles
     ];
 
     home.stateVersion = "${version}";

@@ -1,4 +1,8 @@
 { config, pkgs, ... }: {
+    home.packages = with pkgs; [
+        wlogout
+    ];
+
     programs.wlogout = {
         enable = true;
 
@@ -24,6 +28,6 @@
         ];
     };
 
-    home.file.".config/wlogout/style.css".source = ../assets/wlogout/style.css;
-    home.file.".config/wlogout/icons".source = ../assets/wlogout/icons;
+    home.file.".config/wlogout/style.css".source = ./assets/wlogout/style.css;
+    home.file.".config/wlogout/icons".source = ./assets/wlogout/icons;
 }

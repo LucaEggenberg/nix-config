@@ -8,15 +8,10 @@ in {
     };
     security.polkit.enable = true;
     services.gnome.gnome-keyring.enable = true;
-    
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
         kitty
-        mako
         qt5.qtwayland
         qt6.qtwayland
-        waybar
-        wlogout
-        wofi
         grim
         grimblast
         slurp
@@ -214,8 +209,8 @@ in {
     };
 
     home.file = {
-        ".config/hypr/frappe.conf".source = ../assets/hypr/frappe.conf;
-        ".config/hypr/hyprlock.conf".source = ../assets/hypr/hyprlock.conf;
-        ".config/hypr/scripts/wallpapers.sh".source = ../assets/hypr/scripts/wallpapers.sh;
+        ".config/hypr/frappe.conf".source = ./assets/hypr/frappe.conf;
+        ".config/hypr/hyprlock.conf".source = ./assets/hypr/hyprlock.conf;
+        ".config/hypr/scripts/wallpapers.sh".source = ./assets/hypr/scripts/wallpapers.sh;
     } 
 }
