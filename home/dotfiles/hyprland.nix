@@ -67,7 +67,6 @@ in {
                 "blueman-applet"
                 "wl-paste -t text --watch cliphist store"
                 "swww-daemon"
-                "mako"
                 "hypridle"
                 "openrgb --startminimized -p default &"
             ];
