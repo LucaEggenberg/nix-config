@@ -9,5 +9,6 @@
         };
 
         spotify-player.enable = true;
+        kitty.enable = true;
     };
 }
