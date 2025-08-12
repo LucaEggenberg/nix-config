@@ -1,4 +1,7 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }: 
+let
+    cfg = config.hyprland.custom
+in {
     programs.hyprland = {
         enable = true;
         withUWSM = true;
@@ -20,13 +23,41 @@
         swww
     ];
 
-    wayland.windowManager.hyprland =  {
-        settings = {
-            monitor = [
+    options.hyprland.custom = {
+        monitors = lib.mkOption {
+            type = lib.types.listOf lib.types.str;
+            default = [ 
                 "monitor=,preferred,auto,1"
                 "monitor=,highrr,auto,1"
-                "monitor=,highres,auto,1"
+                "monitor=,highres,auto,1" 
             ];
+            description = "Hyprland monitor configuration";
+        };
+        inputs = lib.mkOption {
+            type = lib.types.attrs;
+            default = {
+                kb_layout = "ch";
+                kb_variant = "";
+                kb_model = "";
+                kb_options = "";
+                kb_rules = "";
+
+                follow_mouse = 1;
+                float_switch_override_focus = 0;
+                numlock_by_default = true;
+                force_no_accel = false;
+
+                touchpad.natural_scroll = true;
+                sensitivity = 0.5;
+            };
+            description = "Hyprland input configuration";
+        };
+    };
+
+    wayland.windowManager.hyprland =  {
+        settings = {
+            monitor = cfg.monitors;
+            input = cfg.inputs;
 
             xwayland.force_zero_scaling = true;
 
@@ -44,15 +75,6 @@
             env = [
                 "ELECTRON_OZONE_PLATFORM_HINT, auto"
             ];
-
-            input = {
-                follow_mouse = 1;
-                float_switch_override_focus = 0;
-                numlock_by_default = true;
-                force_no_accel = false;
-                touchpad.natural_scroll = true;
-                sensitivity = 0.5;
-            };
 
             general = {
                 gaps_in = 5;
@@ -81,13 +103,13 @@
             animations = {
                 enabled = true;
                 bezier = [
-                "myBezier, 0.05, 0.9, 0.1, 1.05"
-                "easeOutExpo, 0.16, 1, 0.3, 1"
+                    "myBezier, 0.05, 0.9, 0.1, 1.05"
+                    "easeOutExpo, 0.16, 1, 0.3, 1"
                 ];
                 animation = [
-                "windows, 1, 7, myBezier, slide"
-                "fade, 1, 7, easeOutExpo"
-                "workspaces, 1, 6, default, slide"
+                    "windows, 1, 7, myBezier, slide"
+                    "fade, 1, 7, easeOutExpo"
+                    "workspaces, 1, 6, default, slide"
                 ];
             };
 
