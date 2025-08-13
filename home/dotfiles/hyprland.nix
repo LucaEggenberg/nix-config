@@ -15,21 +15,34 @@ in {
 
             settings = {
                 monitor = cfg.monitors;
-                input = cfg.inputs;
+                input = lib.mkMerge [
+                    {
+                        follow_mouse = 1;
+                        float_switch_override_focus = 0;
+                        numlock_by_default = true;
+                        force_no_accel = false;
+
+                        touchpad.natural_scroll = true;
+                        sensitivity = 0.5;
+                    }
+                    cfg.inputs
+                ];
 
                 xwayland.force_zero_scaling = true;
 
                 exec-once = [
+                    "waybar"
                     "gnome-keyring-daemon --start --components=pkcs11,secrets,ssh"
                     "blueman-applet"
                     "wl-paste -t text --watch cliphist store"
                     "swww-daemon"
                     "hypridle"
-                    "openrgb --startminimized -p default &"
-                ];
+                ] ++ cfg.autostarts;
 
                 env = [
                     "ELECTRON_OZONE_PLATFORM_HINT, auto"
+                    "HYPRCURSOR_SIZE, 24"
+                    "XCURSOR_SIZE, 24"
                 ];
 
                 general = {
@@ -188,22 +201,19 @@ in {
             ];
             description = "Hyprland monitor configuration";
         };
+        autostarts = lib.mkOption {
+            type = lib.types.listOf lib.types.str;
+            default = [ ];
+            description = "Commands to execute once at the start of the session";
+        };
         inputs = lib.mkOption {
             type = lib.types.attrs;
-            default = {
+            default = { 
                 kb_layout = "ch";
                 kb_variant = "";
                 kb_model = "";
                 kb_options = "";
                 kb_rules = "";
-
-                follow_mouse = 1;
-                float_switch_override_focus = 0;
-                numlock_by_default = true;
-                force_no_accel = false;
-
-                touchpad.natural_scroll = true;
-                sensitivity = 0.5;
             };
             description = "Hyprland input configuration";
         };
