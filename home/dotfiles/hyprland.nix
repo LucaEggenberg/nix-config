@@ -40,6 +40,7 @@ in {
                 ] ++ cfg.autostarts;
 
                 env = [
+                    "GTK_THEME,Adwaita-dark"
                     "ELECTRON_OZONE_PLATFORM_HINT, auto"
                     "HYPRCURSOR_SIZE, 24"
                     "XCURSOR_SIZE, 24"
