@@ -18,9 +18,5 @@
         borderRadius = 5;
         defaultTimeout = 10000;
         groupBy = "summary";
-        
-        grouped = {
-            format = "<b>%s</b>\n%b";
-        };
     };
 }

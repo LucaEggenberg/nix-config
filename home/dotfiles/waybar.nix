@@ -92,13 +92,17 @@
                 "format-bluetooth" = "󰂰 BT {volume}%";
                 "format-muted" = "󰝟 Muted";
                 "format-icons" = {
-                headphone = "";
-                "hands-free" = "";
-                headset = "";
-                phone = "";
-                portable = " portable";
-                car = "";
-                default = ["󰖀", "󰕾", ""];
+                    headphone = "";
+                    "hands-free" = "";
+                    headset = "";
+                    phone = "";
+                    portable = " portable";
+                    car = "";
+                    default = [
+                        "󰖀"
+                        "󰕾"
+                        ""
+                    ];
                 };
                 "on-click" = "pamixer -t";
                 "on-scroll-up" = "pamixer -i 5";
