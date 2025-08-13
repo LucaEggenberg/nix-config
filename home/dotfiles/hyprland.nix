@@ -102,32 +102,39 @@ in {
                 $cmd = ALT
                 $win = SUPER
 
+                binds {
+                    scroll_event_delay = 0
+                }
+
                 # Terminal
-                bind = $cmd, RETURN, exec, kitty
-                bind = $cmd SHIFT, RETURN, exec, [float] kitty
+                bind = $cmd,        RETURN, exec, kitty
+                bind = $cmd SHIFT,  RETURN, exec, [float] kitty
 
                 # Hyprland
-                bind = $cmd SHIFT, P, exec, wlogout
-                bind = $cmd, SPACE, exec, wofi --show drun
-                bind = $cmd, S, swapnext
-                bind = $cmd, Q, killactive,
-                bind = $cmd SHIFT, Q, exec, kill -9 $(hyprctl activewindow | grep pid | tail -1 | awk '{print$2}')
-                bind = $cmd, W, togglefloating,
-                bind = $cmd, W, centerwindow
-                bind = $cmd SHIFT, W, exec, hyprctl dispatch workspaceopt allfloat
-                bind = $cmd, F, fullscreen
-                bind = $cmd, E, pseudo
-                bind = $cmd SHIFT, E, exec, hyprctl dispatch workspaceopt allpseudo
+                bind = $cmd SHIFT,  P,      exec, wlogout
+                bind = $cmd,        SPACE,  exec, wofi --show drun
+                bind = $cmd,        S,      swapnext
+
+                bind = $cmd,        Q,      killactive,
+                bind = $cmd SHIFT,  Q,      exec, kill -9 $(hyprctl activewindow | grep pid | tail -1 | awk '{print$2}')
+
+                bind = $cmd,        W,      togglefloating,
+                bind = $cmd,        W,      centerwindow
+                bind = $cmd SHIFT,  W,      exec, hyprctl dispatch workspaceopt allfloat
+                bind = $cmd,        F,      fullscreen
+
+                bind = $cmd,        E,      pseudo
+                bind = $cmd SHIFT,  E,      exec, hyprctl dispatch workspaceopt allpseudo
 
                 # Misc
-                bind = $win, L, exec, hyprlock
-                bind = $win, E, exec, [float] nautilus --new-window
-                bind = $win SHIFT, M, exec, ~/.config/hypr/scripts/wallpapers.sh
-                bind = $win, F12, exec, hyprctl dispatch dpms off
-                bind = $win SHIFT, F12, exec, hyprctl dispatch dpms on
+                bind = $win,        L,      exec, hyprlock
+                bind = $win,        E,      exec, [float] nautilus --new-window
+                bind = $win SHIFT,  M,      exec, ~/.config/hypr/scripts/wallpapers.sh
+                bind = $win, 	    F12,    exec, hyprctl dispatch dpms off
+                bind = $win SHIFT,  F12,    exec, hyprctl dispatch dpms on
 
-                bind = $win, mouse_up, exec, pamixer -d 1
-                bind = $win, mouse_down, exec, pamixer -i 1
+                bind = $win,        mouse_up, exec, pamixer -d 1
+                bind = $win,        mouse_down, exec, pamixer -i 1
 
                 # Navigate workspace
                 bind = $cmd, H, movefocus, l
@@ -145,7 +152,16 @@ in {
 
                 # Resize
                 bindm = $cmd, mouse:273, resizewindow
+
                 bind = $cmd SHIFT, R, submap, resize
+                submap = resize
+                bind = , L, resizeactive, 30 0
+                bind = , H, resizeactive, -30 0
+                bind = , K, resizeactive, 0 -30
+                bind = , J, resizeactive, 0 30
+                bind = , escape, submap, reset
+                submap = reset
+
 
                 # Open workspace 0-9
                 bind = $cmd, 1, workspace, 1
@@ -174,11 +190,13 @@ in {
                 # SYSTEM/MEDIA CONTROLS
                 bind = , Print, exec, grimblast copy screen
                 bind = $win, Print, exec, grimblast copy area
-                bind = , XF86AudioRaiseVolume, exec, pamixer -i 5
-                bind = , XF86AudioLowerVolume, exec, pamixer -d 5
-                bind = , XF86AudioMute, exec, pamixer -t
-                bind = , XF86MonBrightnessUp, exec, light -A 5
-                bind = , XF86MonBrightnessDown, exec, light -U 5
+
+                bind = , XF86AudioRaiseVolume, exec, pamixer -i 5  # Volume Up
+                bind = , XF86AudioLowerVolume, exec, pamixer -d 5  # Volume Down
+                bind = , XF86AudioMute, exec, pamixer -t          # Volume Mute (toggle)
+
+                bind = , XF86MonBrightnessUp, exec, light -A 5     # Brightness Up
+                bind = , XF86MonBrightnessDown, exec, light -U 5   # Brightness Down
 
                 # [DEBUG] Reload waybar
                 bind = $win SHIFT, W, exec, pkill -9 waybar && hyprctl dispatch exec waybar
