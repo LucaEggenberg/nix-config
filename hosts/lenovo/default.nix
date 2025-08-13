@@ -13,4 +13,10 @@
 
     environment.systemPackages = with pkgs; [
     ];
+
+    home-manager.users.${user.userName} = {
+        hyprland.custom.monitors = [
+            "eDP-1,2880x1800@90,0x0,1.5"
+        ];
+    };
 }

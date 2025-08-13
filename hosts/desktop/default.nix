@@ -35,10 +35,6 @@
             "HDMI-A-1,3840x2160@240,0x0,1.5"
             "HDMI-A-2,2560x1440@60,2560x0,1.0"
         ];
-        hyprland.custom.inputs = {
-            kb_layout = "ch";
-            kb_variant = "";
-        };
     };
 
     # Enable OpenGL
