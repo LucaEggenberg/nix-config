@@ -44,13 +44,6 @@
                     format = "{name}";
                     "all-outputs" = true;
                     "ignore-workspaces" = ["99"];
-                    "persistent-workspaces" = {
-                    "1" = [];
-                    "2" = [];
-                    "3" = [];
-                    "4" = [];
-                    "5" = [];
-                    };
                 };
                 "wlr/taskbar" = {
                     format = "{icon}";
