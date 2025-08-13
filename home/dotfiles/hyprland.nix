@@ -4,7 +4,6 @@ let
 in {
     config = {
         home.packages = with pkgs; [
-            kitty
             grim
             grimblast
             slurp
