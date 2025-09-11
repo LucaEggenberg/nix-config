@@ -22,6 +22,7 @@
         steam-run
         openrgb
         discord
+        freecad-wayland
     ];
 
     services.hardware.openrgb.enable = true;
