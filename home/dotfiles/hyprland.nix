@@ -174,8 +174,8 @@ in {
                 bind = $cmd, 8, workspace, 8
                 bind = $cmd, 9, workspace, 9
                 bind = $cmd, 0, workspace, 10
-
-                # Move active to workspace 0-9
+                
+                # Move with active window to workspace 0-9
                 bind = $cmd SHIFT, 1, movetoworkspace, 1
                 bind = $cmd SHIFT, 2, movetoworkspace, 2
                 bind = $cmd SHIFT, 3, movetoworkspace, 3
@@ -186,6 +186,18 @@ in {
                 bind = $cmd SHIFT, 8, movetoworkspace, 8
                 bind = $cmd SHIFT, 9, movetoworkspace, 9
                 bind = $cmd SHIFT, 0, movetoworkspace, 10
+
+                # Send active window to workspace 0-9
+                bind = $cmd CTRL, 1, movetoworkspacesilent, 1
+                bind = $cmd CTRL, 2, movetoworkspacesilent, 2
+                bind = $cmd CTRL, 3, movetoworkspacesilent, 3
+                bind = $cmd CTRL, 4, movetoworkspacesilent, 4
+                bind = $cmd CTRL, 5, movetoworkspacesilent, 5
+                bind = $cmd CTRL, 6, movetoworkspacesilent, 6
+                bind = $cmd CTRL, 7, movetoworkspacesilent, 7
+                bind = $cmd CTRL, 8, movetoworkspacesilent, 8
+                bind = $cmd CTRL, 9, movetoworkspacesilent, 9
+                bind = $cmd CTRL, 0, movetoworkspacesilent, 10
 
                 # SYSTEM/MEDIA CONTROLS
                 bind = , Print, exec, grimblast copy screen
