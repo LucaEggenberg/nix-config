@@ -1,14 +1,7 @@
 { pkgs, ... }: {
     home.packages = with pkgs; [
-        dconf
+        gnome-themes-extra
     ];
-
-    dconf = {
-        enable = true;
-        settings."org/gnome/desktop/interface" = {
-            color-scheme = "prefer-dark";
-        };
-    };
 
     gtk = {
         enable = true;
@@ -24,13 +17,5 @@
         };
 
         theme.name = "Adwaita-dark";
-
-        gtk3.extraConfig = {
-            gtk-application-prefer-dark-theme = 1;
-        };
-
-        gtk4.extraConfig = {
-            gtk-application-prefer-dark-theme = 1;
-        };
     };
 }
