@@ -78,11 +78,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757791218,
-        "narHash": "sha256-bxwkwOwS4dDMkq+oKPGqSVLdomIKw3ChJVNG/RMAFD8=",
+        "lastModified": 1757794687,
+        "narHash": "sha256-hbxtuNfOFylsCyG5MC30+P5TM1e/J2n2xIWVsY959GE=",
         "owner": "LucaEggenberg",
         "repo": "nvim",
-        "rev": "7b22ceb06075a52b2f325f3f7ac4e9d894d50d00",
+        "rev": "319ef03e99229ec96d3088fd1a2be0e897a70426",
         "type": "github"
       },
       "original": {
