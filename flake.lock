@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1756741629,
-        "narHash": "sha256-n+mgH3NoQf8d1jd8cDp/9Mt++hhyuE3LO3ZAxzjWRZw=",
+        "lastModified": 1757320803,
+        "narHash": "sha256-7PUIQOMQSJLkNtV42SAYUDw0mRdbBNl6q8pLN8GViwM=",
         "owner": "catppuccin",
         "repo": "nix",
-        "rev": "cd22197da06df1eb6fabdaa2fc22c170c4f67382",
+        "rev": "d75e3fe67f49728cb5035bc791f4b9065ff3a2c9",
         "type": "github"
       },
       "original": {
@@ -57,17 +57,37 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1756886854,
-        "narHash": "sha256-6tooT142NLcFjt24Gi4B0G1pgWLvfw7y93sYEfSHlLI=",
+        "lastModified": 1757545623,
+        "narHash": "sha256-mCxPABZ6jRjUQx3bPP4vjA68ETbPLNz9V2pk9tO7pRQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0e6684e6c5755325f801bda1751a8a4038145d7d",
+        "rev": "8cd5ce828d5d1d16feff37340171a98fc3bf6526",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "ref": "nixos-25.05",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nvim-config": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1757791218,
+        "narHash": "sha256-bxwkwOwS4dDMkq+oKPGqSVLdomIKw3ChJVNG/RMAFD8=",
+        "owner": "LucaEggenberg",
+        "repo": "nvim",
+        "rev": "7b22ceb06075a52b2f325f3f7ac4e9d894d50d00",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LucaEggenberg",
+        "repo": "nvim",
         "type": "github"
       }
     },
@@ -78,11 +98,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756831196,
-        "narHash": "sha256-ce3GbGNCYSXswHpoSKXxRDlGNcsZ30lciERrtjCz1Qo=",
+        "lastModified": 1756981260,
+        "narHash": "sha256-GhuD9QVimjynHI0OOyZsqJsnlXr2orowh9H+HYz4YMs=",
         "ref": "refs/heads/master",
-        "rev": "f592793873f3cab387fafdad1d08a696a0edcede",
-        "revCount": 669,
+        "rev": "6eb12551baf924f8fdecdd04113863a754259c34",
+        "revCount": 672,
         "type": "git",
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       },
@@ -96,6 +116,7 @@
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
+        "nvim-config": "nvim-config",
         "quickshell": "quickshell"
       }
     }

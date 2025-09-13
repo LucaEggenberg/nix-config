@@ -12,9 +12,13 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         catppuccin.url = "github:catppuccin/nix";
+        nvim-config = {
+          url = "github:LucaEggenberg/nvim";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
-    outputs = inputs@{ self, nixpkgs, home-manager, quickshell, catppuccin, ... }:
+    outputs = inputs@{ self, nixpkgs, ... }:
     let
         version = "25.05";
 
@@ -27,7 +31,8 @@
         };
 
         args = {
-            inherit self nixpkgs home-manager user version quickshell catppuccin;
+            inherit self nixpkgs user version;
+            inherit (inputs) catppuccin nvim-config quickshell;
         };
         
         moduleBase = [
@@ -45,7 +50,7 @@
                 specialArgs = args;
                 modules = workstationBase ++ [
                     ./hosts/desktop
-                    home-manager.nixosModules.home-manager {
+                    inputs.home-manager.nixosModules.home-manager {
                         home-manager.users.${user.userName} = import ./home;
                         home-manager.extraSpecialArgs = args;
                     }
@@ -56,7 +61,7 @@
                 specialArgs = args;
                 modules = workstationBase ++ [
                     ./hosts/lenovo
-                    home-manager.nixosModules.home-manager {
+                    inputs.home-manager.nixosModules.home-manager {
                         home-manager.users.${user.userName} = import ./home;
                         home-manager.extraSpecialArgs = args;
                     }

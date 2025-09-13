@@ -1,7 +1,8 @@
-{ nixpkgs, user, version, catppuccin, ... }: {
+{ nixpkgs, user, version, catppuccin, nvim-config, ... }: {
     
     imports = [
         catppuccin.homeModules.catppuccin
+        nvim-config.homeModules.default
         ./modules/bash.nix
         ./modules/catppuccin.nix
         ./modules/git.nix
