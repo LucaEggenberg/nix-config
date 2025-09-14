@@ -11,11 +11,16 @@
             url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        catppuccin.url = "github:catppuccin/nix";
         nvim-config = {
           url = "github:LucaEggenberg/nvim";
           inputs.nixpkgs.follows = "nixpkgs";
         };
+        nix-darwin = {
+            url = "github:nix-darwin/nix-darwin/master";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        catppuccin.url = "github:catppuccin/nix";
     };
 
     outputs = inputs@{ self, nixpkgs, ... }:
@@ -67,6 +72,21 @@
                     }
                 ];
             };
+        };
+
+        darwinConfigurations.macbook = inputs.nix-darwin.lib.darwinSystem {
+            system = "aarch64-darwin";
+            specialArgs = args;
+            modules = [
+                ./hosts/macbook
+                ./modules/system/nix.nix
+                ./modules/system/packages.nix
+                ./modules/common
+                inputs.home-manager.darwinModules.home-manager {
+                    home-manager.users.${user.userName} = import ./home/darwin.nix;
+                    home-manager.extraSpecialArgs = args;
+                }
+            ];
         };
     };
 }

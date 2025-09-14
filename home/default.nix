@@ -1,6 +1,7 @@
-{ nixpkgs, user, version, catppuccin, nvim-config, ... }: {
-    
+{ pkgs, catppuccin, nvim-config, ... }: {
     imports = [
+        ./home-manager.nix
+        
         catppuccin.homeModules.catppuccin
         nvim-config.homeModules.default
         ./modules/bash.nix
@@ -10,9 +11,4 @@
         ./modules/packages.nix
         ./dotfiles
     ];
-
-    home.stateVersion = "${version}";
-    home.homeDirectory = "/home/${user.userName}";
-
-    nixpkgs.config.allowUnfree = true;
 }

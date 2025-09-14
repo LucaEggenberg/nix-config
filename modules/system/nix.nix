@@ -1,5 +1,4 @@
 { config, pkgs, version, ... }: {
-
     system.stateVersion = version;
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
