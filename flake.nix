@@ -16,7 +16,7 @@
           inputs.nixpkgs.follows = "nixpkgs";
         };
         nix-darwin = {
-            url = "github:nix-darwin/nix-darwin/master";
+            url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
@@ -81,7 +81,6 @@
                 ./hosts/macbook
                 ./modules/system/nix.nix
                 ./modules/system/packages.nix
-                ./modules/common
                 inputs.home-manager.darwinModules.home-manager {
                     home-manager.users.${user.userName} = import ./home/darwin.nix;
                     home-manager.extraSpecialArgs = args;
