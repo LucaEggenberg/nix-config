@@ -1,7 +1,5 @@
 { pkgs, catppuccin, nvim-config, ... }: {
-    imports = [
-        ./home-manager.nix
-        
+    imports = [        
         catppuccin.homeModules.catppuccin
         nvim-config.homeModules.default
         ./modules/bash.nix

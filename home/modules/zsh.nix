@@ -3,7 +3,7 @@
         enable = true;
 
         shellAliases = {
-            rebuild = "cd ~/dev/nix-config && sudo nix-darwin rebuild switch --flake; cd -";
+            rebuild = "sudo darwin-rebuild switch --flake $HOME/dev/nix-config#macbook";
             ".." = "cd ..";
             "..." = "cd ../..";
             vi = "nvim";

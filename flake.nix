@@ -79,8 +79,6 @@
             specialArgs = args;
             modules = [
                 ./hosts/macbook
-                ./modules/system/nix.nix
-                ./modules/system/packages.nix
                 inputs.home-manager.darwinModules.home-manager {
                     home-manager.users.${user.userName} = import ./home/darwin.nix;
                     home-manager.extraSpecialArgs = args;
