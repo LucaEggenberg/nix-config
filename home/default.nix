@@ -1,14 +1,7 @@
-{ pkgs, user, version, catppuccin, nvim-config, ... }: 
-let 
-    nvim-config-path = "/home/${user.userName}/dev/nvim/nvim";
-    flake-config = if pkgs.pathExists nvim-config-path
-        then { programs.nvim-config.symlinkPath = nvim-config-path; }
-        else { };
-in
-{
-    imports = [        
-        catppuccin.homeModules.catppuccin
+{ pkgs, lib, user, version, catppuccin, nvim-config, ... }: {
+    imports = [
         nvim-config.homeModules.default
+        catppuccin.homeModules.catppuccin
         ./modules/bash.nix
         ./modules/catppuccin.nix
         ./modules/git.nix

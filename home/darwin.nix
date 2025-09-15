@@ -1,9 +1,4 @@
-{ nixpkgs, version, user, nvim-config, ... }:let 
-    nvim-config-path = "/Users/${user.userName}/dev/nvim/nvim";
-    flake-config = if pkgs.pathExists nvim-config-path
-        then { programs.nvim-config.symlinkPath = nvim-config-path; }
-        else { };
-in {
+{ nixpkgs, version, user, nvim-config, ... }: {
     imports = [
         nvim-config.homeModules.default
         ./modules/zsh.nix
