@@ -99,11 +99,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757953736,
-        "narHash": "sha256-xzPogLdz7nw5XO30xv+Nds/3w6ipS5SxUxbKK7CBVFs=",
+        "lastModified": 1757954615,
+        "narHash": "sha256-2f5Gs6JSYPKZXj10072tgkMJ4QsucOEBy1y+GAyegqQ=",
         "owner": "LucaEggenberg",
         "repo": "nvim",
-        "rev": "6ec0d04b18abf1c262679d9527684613f7a93e71",
+        "rev": "d8966d4c309442256fd7abd110a6d4c03ee3f7b2",
         "type": "github"
       },
       "original": {
@@ -119,11 +119,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756981260,
-        "narHash": "sha256-GhuD9QVimjynHI0OOyZsqJsnlXr2orowh9H+HYz4YMs=",
+        "lastModified": 1758006913,
+        "narHash": "sha256-lU00BAdiKAhm96M6o0AzBdZY6+bBSfB2a0zm4xJYl/U=",
         "ref": "refs/heads/master",
-        "rev": "6eb12551baf924f8fdecdd04113863a754259c34",
-        "revCount": 672,
+        "rev": "49646e4407fce5925920b178872ddd9f8e495218",
+        "revCount": 673,
         "type": "git",
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       },

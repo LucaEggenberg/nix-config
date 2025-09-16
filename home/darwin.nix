@@ -1,6 +1,11 @@
-{ nixpkgs, version, user, nvim-config, ... }: {
+{ nixpkgs, version, user, nvim-config, ... }: 
+let
+    nvim-dev-path = "/Users/${user.userName}/dev/nvim/nvim";
+in {
     imports = [
-        nvim-config.homeModules.default
+        nvim-config.homeModules.default {
+            programs.nvim-config.symlinkPath = nvim-dev-path;
+        }
         ./modules/zsh.nix
     ];
 

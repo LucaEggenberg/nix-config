@@ -1,6 +1,11 @@
-{ pkgs, lib, user, version, catppuccin, nvim-config, ... }: {
+{ pkgs, lib, user, version, catppuccin, nvim-config, ... }: 
+let
+    nvim-dev-path = "/home/${user.userName}/dev/nvim/nvim";
+in {
     imports = [
-        nvim-config.homeModules.default
+        nvim-config.homeModules.default {
+            programs.nvim-config.symlinkPath = nvim-dev-path;
+        }
         catppuccin.homeModules.catppuccin
         ./modules/bash.nix
         ./modules/catppuccin.nix
