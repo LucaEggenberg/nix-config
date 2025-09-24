@@ -23,6 +23,13 @@
         openrgb
         discord
         freecad-wayland
+        qemu
+        libvirt
+        (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
+            qemu-system-x86_64 \
+            -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
+            "$@"
+        '')
     ];
 
     services.hardware.openrgb.enable = true;
@@ -39,6 +46,10 @@
         hyprland.custom.autostarts = [
             "openrgb --startminimized -p default &"
         ];
+        hyprland.custom.inputs = { 
+            kb_layout = "ch,us";
+            kb_options = "grp:win_space_toggle";
+        };
     };
 
     # Enable OpenGL
