@@ -69,7 +69,7 @@
     };
 
     boot.kernelParams = [ "nvidia-drm.modeset=1" ];
-    boot.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+    boot.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm", "sg" ];
     boot.extraModprobeConfig = ''
         blacklist nouveau
         options nouveau modeset=0
