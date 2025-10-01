@@ -7,10 +7,4 @@
         wl-clipboard
         cliphist
     ];
-
-    programs._1password.enable = true;
-    programs._1password-gui = {
-        enable = true;
-        polkitPolicyOwners = [ user.userName ];
-    };
 }

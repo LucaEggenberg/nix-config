@@ -5,5 +5,6 @@
         ./gnome.nix
         ./hyprland.nix
         ./packages.nix
+        ./_1password.nix
     ];
 }
