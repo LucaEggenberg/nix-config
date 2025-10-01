@@ -23,6 +23,7 @@
         openrgb
         discord
         freecad-wayland
+        makemkv
         qemu
         libvirt
         (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
