@@ -18,4 +18,14 @@ in {
     home.homeDirectory = "/home/${user.userName}";
     home.stateVersion = "${version}";
     nixpkgs.config.allowUnfree = true;
+
+    programs = {
+        direnv = {
+            enable = true;
+            enableBashIntegration = true;
+            nix-direnv.enable = true;
+        };
+
+        bash.enable = true;
+    };
 }
