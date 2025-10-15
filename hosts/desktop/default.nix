@@ -78,5 +78,6 @@
     boot.extraModprobeConfig = ''
         blacklist nouveau
         options nouveau modeset=0
+        options nvidia_drm fbdev=0
     '';
 }
