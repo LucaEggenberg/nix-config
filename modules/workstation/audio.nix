@@ -13,4 +13,14 @@
         pavucontrol
         easyeffects
     ];
+
+    systemd.user.services.easyeffects = {
+        enable = true;
+        description = "audio effects for pipewire";
+        serviceConfig = {
+            ExecStart = "${pkgs.easyeffects}/bin/easyeffects --gapplication-service";
+            Restart = "on-failure";
+        };
+        wantedBy = [ "default.target" ];
+    };
 }
