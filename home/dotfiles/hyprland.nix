@@ -12,6 +12,7 @@ in {
 
         wayland.windowManager.hyprland =  {
             enable = true;
+            systemd.enable = true;
 
             settings = {
                 monitor = cfg.monitors;
@@ -31,6 +32,8 @@ in {
                 xwayland.force_zero_scaling = true;
 
                 exec-once = [
+                    "dbus-update-activation-environment --systemd --all"
+                    "systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_RUNTIME_DIR"
                     "waybar"
                     "gnome-keyring-daemon --start --components=pkcs11,secrets,ssh"
                     "blueman-applet"
@@ -40,7 +43,6 @@ in {
                 ] ++ cfg.autostarts;
 
                 env = [
-                    "GTK_THEME,Adwaita-dark"
                     "ELECTRON_OZONE_PLATFORM_HINT, auto"
                     "HYPRCURSOR_SIZE, 24"
                     "XCURSOR_SIZE, 24"
@@ -88,7 +90,7 @@ in {
                     force_split = 2;
                 };
 
-                gestures.workspace_swipe = true;
+                gesture = "3, horizontal, workspace";
 
                 windowrule = [
                     "float,class:^(wofi)$"
@@ -99,7 +101,7 @@ in {
             };
 
             extraConfig = ''
-                $cmd = ALT
+                $cmd = MOD1
                 $win = SUPER
 
                 binds {
@@ -200,8 +202,8 @@ in {
                 bind = $cmd CTRL, 0, movetoworkspacesilent, 10
 
                 # SYSTEM/MEDIA CONTROLS
-                bind = , Print, exec, grimblast copy screen
-                bind = $win, Print, exec, grimblast copy area
+                bind = $win, Print, exec, grimblast copy screen
+                bind = , Print, exec, grimblast copy area
 
                 bind = , XF86AudioRaiseVolume, exec, pamixer -i 5  # Volume Up
                 bind = , XF86AudioLowerVolume, exec, pamixer -d 5  # Volume Down

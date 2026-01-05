@@ -1,4 +1,4 @@
-{ config, pkgs, lib, home-manager, user, version,  ... }: {
+{ config, pkgs, lib, home-manager, user, version, ... }: {
     environment.sessionVariables = {
         NIX_HOST = "desktop";
     };
@@ -23,16 +23,20 @@
         openrgb
         discord
         freecad-wayland
+        chromium
         makemkv
         qemu
         libvirt
+        onlyoffice-desktopeditors
+        pkgs.gamescope
+        kdePackages.kolourpaint
+        gimp3
         (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
             qemu-system-x86_64 \
             -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
             "$@"
         '')
     ];
-
     services.hardware.openrgb.enable = true;
 
     programs.steam = {

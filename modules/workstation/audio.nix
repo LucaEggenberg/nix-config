@@ -17,10 +17,23 @@
     systemd.user.services.easyeffects = {
         enable = true;
         description = "audio effects for pipewire";
+
+        wantedBy = [ "hyprland-session.target" ];
+        partOf   = [ "hyprland-session.target" ];
+        
+        after = [
+            "hyprland-session.target"
+            "pipewire.service"
+            "wireplumber.service"
+        ];
+        
         serviceConfig = {
             ExecStart = "${pkgs.easyeffects}/bin/easyeffects --gapplication-service";
+            
             Restart = "on-failure";
+            RestartSec = 2;
+            StartLimitIntervalSec = 0;
+            Environment = "GTK_USE_PORTAL=1";
         };
-        wantedBy = [ "default.target" ];
     };
 }
