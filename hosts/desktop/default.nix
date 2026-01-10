@@ -5,6 +5,7 @@
     
     imports = [
         ./hardware.nix
+        ./switch-capture.nix
     ];
     
     fileSystems."/media/store" = {

@@ -3,7 +3,7 @@
         adwaita-icon-theme
     ];
 
-    services.xserver.desktopManager.gnome.enable = true;
+    services.desktopManager.gnome.enable = true;
     xdg.portal = {
         enable = true;
         extraPortals = [ 
