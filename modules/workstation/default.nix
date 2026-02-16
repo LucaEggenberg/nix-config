@@ -1,6 +1,8 @@
 { pkgs, ... }: {
     imports = [
+        ./ambiguous.nix
         ./audio.nix
+        ./bluetooth.nix
         ./dm.nix
         ./gnome.nix
         ./hyprland.nix
