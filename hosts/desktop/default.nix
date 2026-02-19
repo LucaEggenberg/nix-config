@@ -54,9 +54,15 @@
             #"openrgb --startminimized -p default &"
         ];
         hyprland.custom.inputs = { 
-            kb_layout = "ch,us";
-            kb_options = "grp:win_space_toggle";
+            kb_layout = "ch";
         };
+        hyprland.custom.devices = [
+            {
+                name = "glove80-keyboard";
+                kb_layout = "us";
+                kb_options = "altwin:meta_alt";
+            }
+        ];
     };
 
     # https://gitlab.gnome.org/GNOME/totem/-/issues/616
