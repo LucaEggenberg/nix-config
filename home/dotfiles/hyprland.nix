@@ -17,7 +17,7 @@ in {
             settings = {
                 monitor = cfg.monitors;
                 input = lib.mkMerge [
-                    {
+                    (cfg.inputs // {
                         follow_mouse = 1;
                         float_switch_override_focus = 0;
                         numlock_by_default = true;
@@ -25,8 +25,11 @@ in {
 
                         touchpad.natural_scroll = true;
                         sensitivity = 0.5;
-                    }
-                    cfg.inputs
+
+                        kb_options = if cfg.inputs.kb_options != "" 
+                            then "altwin:meta_alt,${cfg.inputs.kb_options}" 
+                            else "altwin:meta_alt";
+                    })
                 ];
 
                 xwayland.force_zero_scaling = true;
