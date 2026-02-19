@@ -9,8 +9,4 @@
   };
 
   services.blueman.enable = true;
-
-  environment.sessionVariables = {
-    BLUEMAN_DISABLE_PLUGINS = "notify";
-  };
 }

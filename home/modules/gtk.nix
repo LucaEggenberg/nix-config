@@ -5,6 +5,9 @@
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
     };
+    "org/blueman/general" = {
+      plugin-list = [ "!ConnectionNotifier" ];
+    };
   };
 
   gtk = {
