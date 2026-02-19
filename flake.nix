@@ -19,7 +19,10 @@
             url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-
+        hwsuhdx1 = {
+            url = "github:LucaEggenberg/hwsuhdx1";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
         catppuccin.url = "github:catppuccin/nix";
     };
 
@@ -37,7 +40,7 @@
 
         args = {
             inherit self nixpkgs user version;
-            inherit (inputs) catppuccin nvim-config quickshell;
+            inherit (inputs) catppuccin nvim-config quickshell hwsuhdx1;
         };
         
         moduleBase = [

@@ -1,65 +1,97 @@
-{ pkgs, ... }:
-
+{ pkgs, hwsuhdx1, ... }:
 let
-  switchHd60x = pkgs.writeShellScriptBin "switch-hd60x" ''
+  switchCapture = pkgs.writeShellScriptBin "switch-capture" ''
     set -euo pipefail
 
-    PW_LINK="${pkgs.pipewire}/bin/pw-link"
+    # Cleanup
+    pkill -f "pw-loopback.*switch-capture-audio" || true
 
-    IN_NODE="alsa_input.usb-Elgato_Elgato_HD60_X_A00XB51921VR9N-02.analog-stereo"
-    OUT_NODE="easyeffects_sink"
-    # If you ever want to bypass EasyEffects and go straight to iFi, use:
-    # OUT_NODE="alsa_output.usb-iFi__by_AMR__iFi__by_AMR__HD_USB_Audio_0003-00.analog-stereo"
+    # Hardware: 4K60 NV12
+    ${pkgs.v4l-utils}/bin/v4l2-ctl -d /dev/video0 \
+      --set-fmt-video=width=3840,height=2160,pixelformat=NV12 \
+      --set-parm=60 || true
 
-    # Wait (briefly) for PipeWire + the Elgato node to exist
-    for i in $(seq 1 120); do
-      if $PW_LINK -l | grep -q "$IN_NODE"; then
-        break
-      fi
-      sleep 0.1
-    done
+    # Audio Loopback (Safety Buffer)
+    ${pkgs.pipewire}/bin/pw-loopback \
+      -n "switch-capture-audio" \
+      -C "alsa_input.pci-0000_04_00.0.stereo-fallback" \
+      -P "switch_safety_buffer" \
+      --latency=0.04 \
+      --capture-props='{ "node.passive": true, "node.driver": false, "node.always-process": true }' &
 
-    # Grab ports dynamically (avoids hardcoding port suffixes)
-    IN_PORTS="$($PW_LINK -i | grep "^$IN_NODE:" || true)"
-    OUT_PORTS="$($PW_LINK -o | grep "^$OUT_NODE:" || true)"
+    LOOPBACK_PID=$!
+    trap 'kill $LOOPBACK_PID' EXIT
 
-    if [ -n "$IN_PORTS" ] && [ -n "$OUT_PORTS" ]; then
-      IN_FL="$(echo "$IN_PORTS"  | grep -m1 -E ":capture_FL|:input_FL" | awk '{print $1}')"
-      IN_FR="$(echo "$IN_PORTS"  | grep -m1 -E ":capture_FR|:input_FR" | awk '{print $1}')"
-      OUT_FL="$(echo "$OUT_PORTS" | grep -m1 -E ":playback_FL|:monitor_FL" | awk '{print $1}')"
-      OUT_FR="$(echo "$OUT_PORTS" | grep -m1 -E ":playback_FR|:monitor_FR" | awk '{print $1}')"
-
-      # Link L/R (ignore errors if already linked)
-      $PW_LINK "$IN_FL" "$OUT_FL" || true
-      $PW_LINK "$IN_FR" "$OUT_FR" || true
-    fi
-
-    # Launch Switch video (1440p60 NV12, very low latency)
+    # Launch MPV
     exec ${pkgs.mpv}/bin/mpv \
       --profile=low-latency \
       --untimed \
+      --no-audio \
       --cache=no \
-      --demuxer-lavf-o-set=input_format=nv12 \
-      --demuxer-lavf-o-set=video_size=2560x1440 \
-      --demuxer-lavf-o-set=framerate=60 \
-      --gpu-context=wayland \
+      --stream-buffer-size=4k \
+      --vd-lavc-threads=1 \
+      --video-sync=audio \
+      --video-latency-hacks=yes \
+      --demuxer-lavf-o=video_size=3840x2160,input_format=nv12,framerate=60 \
       --fs \
-      /dev/video0
+      av://v4l2:/dev/video0
   '';
 
   switchDesktop = pkgs.makeDesktopItem {
-    name = "switch-hd60x";
-    desktopName = "Nintendo Switch";
-    exec = "${switchHd60x}/bin/switch-hd60x";
+    name = "switch-capture";
+    desktopName = "Nintendo Switch Capture";
+    exec = "${switchCapture}/bin/switch-capture";
     terminal = false;
     categories = [ "Game" "AudioVideo" ];
   };
 in
 {
+  imports = [ hwsuhdx1.nixosModules.hwsuhdx1 ];
+  hardware.hwsuhdx1.enable = true;
+
   environment.systemPackages = with pkgs; [
-    pipewire
-    mpv
-    switchHd60x
-    switchDesktop
+    pipewire mpv v4l-utils switchCapture switchDesktop
   ];
+
+  # Virtual Safety Buffer
+  services.pipewire.extraConfig.pipewire."99-switch-buffer" = {
+    "context.modules" = [
+      {
+        name = "libpipewire-module-loopback";
+        args = {
+          "node.name" = "switch_safety_buffer";
+          "node.description" = "Switch Safety Buffer";
+          "capture.props" = { 
+            "media.class" = "Audio/Sink"; 
+            "node.passive" = true;
+          };
+          "playback.props" = { 
+            "node.name" = "switch_safety_output"; 
+            "target.object" = "easyeffects_sink"; 
+            "node.passive" = true;
+          };
+        };
+      }
+    ];
+  };
+
+  # Lower capture-card priority & sync with system-clock
+  services.pipewire.wireplumber.extraConfig."99-capture-card-priority" = {
+    "monitor.alsa.rules" = [
+      {
+        matches = [ { "node.name" = "~alsa_input.pci-0000_04_00.0.*"; } ];
+        actions = {
+          update-props = {
+            "priority.driver" = 1;
+            "priority.session" = 1;
+            "node.passive" = true;
+            "node.driver" = false;
+            "clock.boundary" = 2048;
+            "node.force-rate" = 48000;
+            "node.force-quantum" = 1024;
+          };
+        };
+      }
+    ];
+  };
 }

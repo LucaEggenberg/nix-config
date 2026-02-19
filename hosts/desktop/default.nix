@@ -19,8 +19,13 @@
     
     nixpkgs.config.allowUnfree = true;
     
+    services.udev.extraRules = ''
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", ATTRS{idProduct}=="0281", MODE="0666"
+    '';
+    
     environment.systemPackages = with pkgs; [
         steam
+        via
         steam-run
         openrgb
         discord
@@ -41,8 +46,9 @@
 
     home-manager.users.${user.userName} = {
         hyprland.custom.monitors = [
-            "HDMI-A-1,3840x2160@240,0x0,1.5"
-            "HDMI-A-2,2560x1440@60,2560x0,1.0"
+            "HDMI-A-1,disable"
+            "HDMI-A-2,3840x2160@240,0x0,1.5"
+            "HDMI-A-3,2560x1440@60,2560x0,1.0"
         ];
         hyprland.custom.autostarts = [
             #"openrgb --startminimized -p default &"
