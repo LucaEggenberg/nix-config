@@ -25,6 +25,7 @@
     
     environment.systemPackages = with pkgs; [
         steam
+        lutris
         via
         steam-run
         openrgb
@@ -48,7 +49,7 @@
         hyprland.custom.monitors = [
             "HDMI-A-1,disable"
             "HDMI-A-2,3840x2160@240,0x0,1.5"
-            "HDMI-A-3,2560x1440@60,2560x0,1.0"
+            "DP-2,2560x1440@60,2560x0,1.0"
         ];
         hyprland.custom.autostarts = [
             #"openrgb --startminimized -p default &"
@@ -85,7 +86,7 @@
         nvidiaSettings = true;
     };
 
-    boot.kernelParams = [ "nvidia-drm.modeset=1" "video=efifb:on" ];
+    boot.kernelParams = [ "nvidia-drm.modeset=1" "video=efifb:on" "pcie_aspm=off" ];
     boot.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "sg" ];
     boot.extraModprobeConfig = ''
         blacklist nouveau
