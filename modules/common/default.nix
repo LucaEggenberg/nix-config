@@ -1,7 +1,7 @@
 { config, pkgs, lib, user, ... }: {
     users.users.${user.userName} = {
         isNormalUser = true;
-        extraGroups = [ "wheel" "networkmanager" "video" "audio" "libvirtd" "kvm" "qemu-libvirtd" ];
+        extraGroups = [ "wheel" "networkmanager" "video" "audio" "libvirtd" "kvm" "qemu-libvirtd" "cdrom" "optical" ];
         shell = pkgs.bash;
         openssh.authorizedKeys.keys = [
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPLTvjhfe4YWatJ3Y19rYj8YHGmiki5AMqDykfkFH5/f"
