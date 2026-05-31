@@ -5,8 +5,6 @@
     
     imports = [
         ./hardware.nix
-        ./switch-capture.nix
-        ./winvm.nix
     ];
 
     fileSystems."/media/store" = {
@@ -38,11 +36,17 @@
         pkgs.gamescope
         kdePackages.kolourpaint
         gimp3
+        faugus-launcher
     ];
     services.hardware.openrgb.enable = true;
 
     programs.steam = {
         enable = true;
+    };
+
+    programs.gamescope = {
+        enable = true;
+        capSysNice = true;
     };
 
     home-manager.users.${user.userName} = {
@@ -85,12 +89,4 @@
         open = true;
         nvidiaSettings = true;
     };
-
-    boot.kernelParams = [ "nvidia-drm.modeset=1" "video=efifb:on" "pcie_aspm=off" ];
-    boot.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "sg" ];
-    boot.extraModprobeConfig = ''
-        blacklist nouveau
-        options nouveau modeset=0
-        options nvidia_drm fbdev=0
-    '';
 }

@@ -19,11 +19,10 @@
             url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        hwsuhdx1 = {
-            url = "github:LucaEggenberg/hwsuhdx1";
+        catppuccin = {
+            url = "github:catppuccin/nix";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        catppuccin.url = "github:catppuccin/nix";
     };
 
     outputs = inputs@{ self, nixpkgs, ... }:
@@ -40,7 +39,7 @@
 
         args = {
             inherit self nixpkgs user version;
-            inherit (inputs) catppuccin nvim-config quickshell hwsuhdx1;
+            inherit (inputs) catppuccin nvim-config quickshell;
         };
         
         moduleBase = [
@@ -62,6 +61,16 @@
                         home-manager.users.${user.userName} = import ./home;
                         home-manager.extraSpecialArgs = args;
                     }
+                    ({ ... }: {
+                        nixpkgs.overlays = [
+                            (final: prev: {
+                                valkey = prev.valkey.overrideAttrs (oldAttrs: {
+                                doCheck = false;
+                                checkFlags = [];
+                                });
+                            })
+                        ];
+                    })
                 ];
             };
             lenovo = nixpkgs.lib.nixosSystem {
