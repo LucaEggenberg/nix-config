@@ -51,9 +51,22 @@
 
     home-manager.users.${user.userName} = {
         hyprland.custom.monitors = [
-            "HDMI-A-1,disable"
-            "HDMI-A-2,3840x2160@240,0x0,1.5"
-            "DP-2,2560x1440@60,2560x0,1.0"
+            {
+                output = "HDMI-A-1";
+                disabled = true;
+            }
+            {
+                output = "HDMI-A-2";
+                mode = "3840x2160@240";
+                position = "0x0";
+                scale = 1.5;
+            }
+            {
+                output = "DP-2";
+                mode = "2560x1440@144";
+                position = "auto";
+                scale = 1;
+            }
         ];
         hyprland.custom.autostarts = [
             #"openrgb --startminimized -p default &"
